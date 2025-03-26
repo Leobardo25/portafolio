@@ -1,0 +1,136 @@
+html {
+  scroll-behavior: smooth; /* Scroll suave */
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan si es necesario */
+}
+/* Estilos del modo claro */
+.light {
+  nav {
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con opacidad */
+  }
+
+  .navbar a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px; /* Añade padding para que los enlaces sean más clickeables */
+    transition: all 0.3s ease-in-out; /* Agrega una transición suave */
+    border-radius: 5px; /* Bordes redondeados */
+  }
+
+  /* Efecto hover para los enlaces */
+  .navbar a:hover {
+    background-color: rgba(19, 15, 15, 0.2); /* Fondo semitransparente */
+    color: #a40ab9; /* Cambia el color del texto */
+  }
+}
+
+/* Estilos del modo oscuro */
+.dark {
+  nav {
+      background: linear-gradient(to right, #000000e6, #01012f); /* Degradado de rosa a naranja */
+  }
+
+  .navbar a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px; /* Añade padding para que los enlaces sean más clickeables */
+    transition: all 0.3s ease-in-out; /* Agrega una transición suave */
+    border-radius: 5px; /* Bordes redondeados */
+  }
+
+  /* Efecto hover para los enlaces */
+  .navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo semitransparente */
+    color: #f5401c; /* Cambia el color del texto */
+  }
+}
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+}
+
+.contact-icons {
+  display: flex;
+  gap: 2px; /* Espacio entre los íconos */
+  margin-left: auto; /* Alinea los íconos a la derecha */
+  margin-right: 0;
+}
+
+.mode-toggle {
+  margin-left: 20px;
+  margin-right: 35px;
+}
+
+.mode-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* Estilo para el botón de modo claro/oscuro */
+button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 32px;
+  transition: transform 0.3s ease-in-out; /* Animación de transformación */
+}
+
+
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+
+
+  
+  /* Disposición de los íconos y el botón de modo */
+  .navbar {
+    flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contact-icons {
+    margin-left: 0;
+    margin-bottom: 10px; /* Espacio debajo de los íconos */
+  }
+
+
+  /* Para pantallas más pequeñas, el espacio entre los íconos se reduce */
+  .contact-icons a {
+    font-size: 18px; /* Reducir tamaño de los íconos */
+  }
+
+  button {
+    font-size: 28px; /* Reducir el tamaño del botón */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar ul {
+    gap: 10px; /* Reducir espacio entre los enlaces */
+  }
+
+  .contact-icons {
+    gap: 15px; /* Espaciado entre los íconos */
+  }
+
+  button {
+    font-size: 24px; 
+  }
+}

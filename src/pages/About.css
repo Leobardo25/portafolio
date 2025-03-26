@@ -1,0 +1,184 @@
+/* Estilos para el contenedor de la sección sobre mí */
+.about-container {
+  padding: 50px 10%;
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.about-container.dark {
+  background-color: #00000066; /* Fondo oscuro para el modo noche */
+  color: white; /* Asegúrate de que el texto sea claro */
+}
+
+.about-container.light {
+  background-color: #f8f8f866; /* Fondo claro para el modo día */
+  color: black; /* Texto oscuro */
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-header h2 {
+  font-size: 2em;
+}
+
+.about-header p {
+  font-size: 1em;
+}
+
+.about-content {
+  display: grid; /* Usamos grid para las 4 partes */
+  grid-template-columns: 1fr 1fr; /* Dos columnas */
+  grid-template-rows: auto auto; /* Dos filas */
+  gap: 30px;
+  grid-template-areas:
+    "left-top right-top"
+    "left-bottom right-bottom"; /* Distribuimos el contenido en 4 áreas */
+}
+
+.about-left-top {
+  grid-area: left-top;
+}
+
+.about-right-top {
+  grid-area: right-top;
+}
+
+.about-left-bottom {
+  grid-area: left-bottom;
+}
+
+.about-right-bottom {
+  grid-area: right-bottom;
+}
+
+.about-image img {
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+}
+
+.about-text {
+  max-width: 600px;
+}
+
+.about-text ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.about-text ul li {
+  margin: 10px 0;
+}
+
+.about-text a {
+  text-decoration: none;
+  color: #0073e6;
+}
+
+.about-text a:hover {
+  text-decoration: underline;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+}
+
+.projects-button {
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  background-color: #5037db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 15px;
+}
+
+.projects-button:hover {
+  background-color: #3e2ab0;
+}
+
+/* Media Queries para pantallas más pequeñas */
+
+/* Para pantallas con un máximo de 768px (tabletas y móviles pequeños) */
+@media (max-width: 768px) {
+  /* Ajustar el padding del contenedor */
+  .about-container {
+    padding: 40px 5%;
+  }
+
+  /* Ajustar el tamaño del texto en el encabezado */
+  .about-header h2 {
+    font-size: 1.8em;
+  }
+
+  .about-header p {
+    font-size: 0.9em;
+  }
+
+  /* Cambiar el layout de la grilla a una sola columna */
+  .about-content {
+    grid-template-columns: 1fr; /* Una sola columna */
+    grid-template-areas:
+      "left-top"
+      "right-top"
+      "left-bottom"
+      "right-bottom"; /* Cambiar la distribución para dispositivos pequeños */
+  }
+
+  /* Ajustar las imágenes */
+  .about-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Ajustar el tamaño de las habilidades */
+  .skills-grid {
+    flex-direction: column; /* Apilar las habilidades verticalmente */
+  }
+
+  .projects-button {
+    font-size: 1rem; /* Reducir el tamaño del botón */
+    padding: 8px 15px; /* Reducir padding */
+  }
+}
+
+/* Para pantallas de hasta 480px (móviles muy pequeños) */
+@media (max-width: 480px) {
+  /* Reducir el tamaño de la fuente del título */
+  .about-header h2 {
+    font-size: 1.5em;
+  }
+
+  .about-header p {
+    font-size: 0.8em;
+  }
+
+  /* Ajustar el padding del contenedor */
+  .about-container {
+    padding: 30px 3%;
+  }
+
+  /* Cambiar el diseño de las imágenes */
+  .about-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .projects-button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+}

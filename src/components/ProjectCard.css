@@ -1,0 +1,81 @@
+.project-card {
+  width: 300px; /* Tamaño base de la tarjeta */
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  transition: transform 0.3s ease-in-out;
+  max-width: 100%; /* Asegura que no se desborde */
+  box-sizing: border-box; /* Considera el padding y border dentro del tamaño total */
+}
+
+.project-links a {
+  padding: 12px 0px; /* Aumenta la altura y el ancho interno del botón */
+  display: inline-block; /* Hace que el botón se expanda según su contenido */
+  min-width: 100%; /* Define un ancho mínimo */
+  text-align: center;
+  border-radius: 5px;
+}
+
+/* --- Modo Claro --- */
+.project-card.light {
+  background-color: #fff;
+  color: black;
+}
+
+.project-card.light .project-links a {
+  background: #a40ab994;
+  color: rgb(0, 0, 0);
+}
+
+.project-card.light .project-links a:hover {
+  background:#6c077ab9;
+}
+
+/* --- Modo Oscuro --- */
+.project-card.dark {
+  background: linear-gradient(to right, #000000cb, #01012fae);
+  color: white;
+}
+
+.project-card.dark .project-links a {
+  background: #f5401cb1;
+  color: rgb(255, 255, 255);
+}
+
+.project-card.dark .project-links a:hover {
+  background: #81210ede;
+}
+
+/* --- Efectos de hover --- */
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries para pantallas más pequeñas */
+
+/* Para pantallas con un máximo de 768px (tabletas y móviles pequeños) */
+@media (max-width: 768px) {
+  .project-card {
+    width: 100%; /* Las tarjetas ocuparán todo el ancho disponible */
+    margin: 10px 0; /* Espacio reducido entre las tarjetas */
+  }
+
+  .project-links a {
+    padding: 10px; /* Reducir el padding en dispositivos pequeños */
+  }
+}
+
+/* Para pantallas de hasta 480px (móviles muy pequeños) */
+@media (max-width: 480px) {
+  .project-card {
+    width: 100%; /* Las tarjetas ocuparán todo el ancho disponible */
+    margin: 10px 0; /* Espacio reducido entre las tarjetas */
+  }
+
+  .project-links a {
+    padding: 8px 0; /* Reducir el padding en móviles muy pequeños */
+  }
+}

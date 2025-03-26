@@ -1,0 +1,93 @@
+
+
+.home-container.dark {
+  background-color: #0000006c; /* Fondo oscuro para el modo noche */
+  color: white; /* Asegúrate de que el texto sea claro */
+}
+
+.home-container.light {
+  background-color: #ffffff65; /* Fondo claro para el modo día */
+  color: black; /* Texto oscuro */
+}
+
+
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ocupa toda la pantalla */
+    padding: 0 10%;
+    gap: 50px; /* Espacio entre el texto y la imagen */
+  }
+  
+  .text-content {
+    flex: 1; /* Ocupa el espacio disponible */
+    max-width: 500px; /* Limita el ancho del texto */
+  }
+  
+  .text-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .text-content p {
+    font-size: 1.0rem;
+    
+  }
+  .buttons-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .btn-primary, .btn-whatsapp {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  
+  }
+  
+  /* Botón Proyectos */
+  .btn-primary {
+    background-color: #5037db;
+    color: white;
+    
+  }
+  
+  .btn-primary:hover {
+    background-color: #2f1f86;
+  }
+  
+  /* Botón WhatsApp */
+  .btn-whatsapp {
+    background-color: #25D366;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .btn-whatsapp:hover {
+    background-color: #127a3c;
+  }
+
+  a {
+    text-decoration: none; /* Elimina el subrayado */
+  }
+  
+  .video {
+    flex: 1; /* Ocupa el otro lado */
+    display: flex;
+    justify-content: center;
+    height: 50%;
+    max-width: 100%;
+    border-radius: 20px;
+  }
+  
+  
