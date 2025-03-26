@@ -14,7 +14,7 @@ const Projects = ({ darkMode }) => { // ✅ Recibe el darkMode como prop
           title="Proyecto Ejemplo"
           description="Este es un proyecto ejemplo que demuestra cómo usar React."
           projectLink="https://example.com/proyecto"
-          githubLink="https://github.com/tuusuario/proyecto"
+          githubLink="https://github.com/Leobardo25/portafolio"
           darkMode={darkMode} // ✅ Pasa el modo oscuro a cada tarjeta
         />
         
