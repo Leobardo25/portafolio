@@ -1,4 +1,4 @@
-import "./Home.css";
+import "./home.css";
 import videoDia from "../videos/dia.mp4"; // Video para el modo claro
 import videoNoche from "../videos/noche.mp4"; // Video para el modo oscuro
 import { Link } from "react-router-dom";

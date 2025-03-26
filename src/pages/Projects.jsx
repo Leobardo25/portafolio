@@ -2,20 +2,24 @@ import React from 'react';
 import ProjectCard from '../components/ProjectCard';
 import './Projects.css';
 
-import projectImage from '../img/182428240217.jpg'; // Imagen de ejemplo
+import projectImage from '../img/182428240217.jpg';
+import projectImage1 from '../img/previewP.jpg'; 
 
-const Projects = ({ darkMode }) => { // ✅ Recibe el darkMode como prop
+
+const Projects = ({ darkMode }) => { 
   return (
     <section className={`projects-container ${darkMode ? "dark" : "light"}`}>
       <h2>Mis Proyectos</h2>
       <div className="projects-grid">
         <ProjectCard
-          image={projectImage}
-          title="Proyecto Ejemplo"
-          description="Este es un proyecto ejemplo que demuestra cómo usar React."
+          image={projectImage1}
+          title="Mi portafolio"
+          description="Este portafolio web, creado con React.js y CSS, presenta mis proyectos y habilidades como desarrollador frontend. Incluye un modo oscuro/claro, navegación
+           con React Router y acceso directo a WhatsApp.
+            El proyecto está versionado con Git y GitHub.. 🚀 ."
           projectLink="https://example.com/proyecto"
           githubLink="https://github.com/Leobardo25/portafolio"
-          darkMode={darkMode} // ✅ Pasa el modo oscuro a cada tarjeta
+          darkMode={darkMode} 
         />
         
         <ProjectCard
