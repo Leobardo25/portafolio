@@ -1,93 +1,156 @@
-
-
 .home-container.dark {
   background-color: #0000006c; /* Fondo oscuro para el modo noche */
-  color: white; /* Asegúrate de que el texto sea claro */
+  color: white;
 }
 
 .home-container.light {
   background-color: #ffffff65; /* Fondo claro para el modo día */
-  color: black; /* Texto oscuro */
+  color: black;
 }
 
-
 .home-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Ocupa toda la pantalla */
-    padding: 0 10%;
-    gap: 50px; /* Espacio entre el texto y la imagen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Ocupa toda la pantalla */
+  padding: 0 10%;
+  gap: 50px; /* Espacio entre el texto y la imagen */
+}
+
+/* Ajuste del contenido de texto */
+.text-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.text-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.text-content p {
+  font-size: 1rem;
+}
+
+/* Contenedor de botones */
+.buttons-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap; /* Permite que los botones se acomoden si no hay espacio */
+}
+
+/* Botones generales */
+.btn-primary, .btn-whatsapp {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+/* Botón Proyectos */
+.btn-primary {
+  background-color: #5037db;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2f1f86;
+}
+
+/* Botón WhatsApp */
+.btn-whatsapp {
+  background-color: #25D366;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-whatsapp:hover {
+  background-color: #127a3c;
+}
+
+/* Elimina subrayado en los enlaces */
+a {
+  text-decoration: none;
+}
+
+/* Ajuste del video */
+.video {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  height: 50%;
+  max-width: 100%;
+  border-radius: 20px;
+}
+
+/* ------ RESPONSIVE DESIGN ------ */
+
+/* Para pantallas menores a 1024px (tablets y móviles grandes) */
+@media (max-width: 1024px) {
+  .home-container {
+    flex-direction: column; /* Cambia a disposición en columna */
+    text-align: center;
+    height: auto;
+    padding: 5% 10%;
   }
-  
+
   .text-content {
-    flex: 1; /* Ocupa el espacio disponible */
-    max-width: 500px; /* Limita el ancho del texto */
+    max-width: 100%;
   }
-  
+
+  .video {
+    height: auto;
+    width: 100%;
+  }
+}
+
+/* Para pantallas menores a 768px (móviles y tablets pequeñas) */
+@media (max-width: 768px) {
   .text-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 2rem;
   }
-  
+
   .text-content p {
-    font-size: 1.0rem;
-    
+    font-size: 0.9rem;
   }
+
   .buttons-container {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-  }
-  
-  .btn-primary, .btn-whatsapp {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  
-  }
-  
-  /* Botón Proyectos */
-  .btn-primary {
-    background-color: #5037db;
-    color: white;
-    
-  }
-  
-  .btn-primary:hover {
-    background-color: #2f1f86;
-  }
-  
-  /* Botón WhatsApp */
-  .btn-whatsapp {
-    background-color: #25D366;
-    color: white;
-    display: flex;
+    flex-direction: column; /* Botones en columna */
     align-items: center;
     gap: 10px;
   }
-  
-  .btn-whatsapp:hover {
-    background-color: #127a3c;
+
+  .btn-primary, .btn-whatsapp {
+    width: 100%; /* Botones ocupan todo el ancho */
+    justify-content: center;
+  }
+}
+
+/* Para pantallas menores a 480px (móviles pequeños) */
+@media (max-width: 480px) {
+  .text-content h1 {
+    font-size: 1.8rem;
   }
 
-  a {
-    text-decoration: none; /* Elimina el subrayado */
+  .text-content p {
+    font-size: 0.8rem;
   }
-  
-  .video {
-    flex: 1; /* Ocupa el otro lado */
-    display: flex;
-    justify-content: center;
-    height: 50%;
-    max-width: 100%;
-    border-radius: 20px;
+
+  .buttons-container {
+    gap: 8px;
   }
-  
-  
+
+  .btn-primary, .btn-whatsapp {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+}
