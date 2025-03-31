@@ -55,10 +55,20 @@ const Home = ({ darkMode }) => {
     >
       <div className="text-content">
         <motion.h1 variants={itemVariants}>
-          ¡Hola! Soy Leonardo <motion.span 
-            animate={{ rotate: [0, 20, -20, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >👋</motion.span>
+          ¡Hola! Soy Leonardo <motion.span
+                    animate={{ rotate: [0, 20, -20, 0] }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 2,
+                      ease: "easeInOut"
+                    }}
+                    style={{ 
+                      display: 'inline-block',
+                      transform: 'rotate(0deg)', // Fuerza el modo 2D
+                      backfaceVisibility: 'visible' // Soluciona problemas de visualización
+                    }}
+                  >👋</motion.span>
+
         </motion.h1>
         
         <motion.p variants={itemVariants}>

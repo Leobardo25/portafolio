@@ -33,13 +33,11 @@
 
 
 .about-container.dark {
-  background-color: rgba(0, 0, 0, 0.575);
   color: var(--text-light);
   
 }
 
 .about-container.light {
-  background-color: rgba(255, 255, 255, 0.47);
   color: var(--text-dark);
 }
 
@@ -287,7 +285,7 @@
   }
   
   .action-button {
-    width: 100%;
+    width: 85%;
   }
 }
 

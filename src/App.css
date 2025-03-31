@@ -100,8 +100,10 @@ html, body {
   .content {
     padding-top: 60px; /* Menor espacio para navbar móvil */
   }
-  
-  .video-background {
-    /* Opcional: cargar un video diferente para móviles con menor resolución */
+
+  ::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
   }
+  
 }

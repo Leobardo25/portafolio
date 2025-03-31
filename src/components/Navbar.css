@@ -230,6 +230,13 @@
   .desktop-nav {
     display: none;
   }
+
+  .theme-toggle {
+    
+    margin-top: 20px;
+  }
+
+
 }
 
 /* Ocultar el menú móvil en pantallas grandes */
@@ -239,4 +246,6 @@
   .menu-overlay {
     display: none;
   }
+
+  
 }

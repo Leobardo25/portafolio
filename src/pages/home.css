@@ -38,11 +38,11 @@
 
 /* Colores de fondo según el tema */
 .home-container.dark::before {
-  background-color: rgba(0, 0, 0, 0.7); /* Oscuro */
+  color: rgb(0, 0, 0); /* Oscuro */
 }
 
 .home-container.light::before {
-  background-color: rgba(255, 255, 255, 0.7); /* Claro */
+ color: rgb(255, 255, 255); /* Claro */
 }
 
 /* Contenedor de texto */
@@ -64,6 +64,11 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent; /* Hace que el texto tome el color del fondo */
+}
+
+.text-content span {
+  color: white !important; /* O cualquier color visible */
+  z-index: 10;
 }
 
 /* Estilos del párrafo */
@@ -160,22 +165,22 @@
 @media (max-width: 768px) {
   .home-container {
     grid-template-columns: 1fr; /* Cambia a una sola columna */
-    padding: 20% 5% 10%;
+    padding: 10% 5% 10%;
     text-align: center; /* Centra el contenido */
   }
   
   .text-content {
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
   
   .buttons-container {
     justify-content: center;
-    margin: 2rem auto 0;
+    margin: 1rem auto 0;
   }
   
   .video-container {
-    order: -1; /* Mueve el video arriba en móviles */
+    order: 1; /* Mueve el video arriba -1 pasa a abajo */
     margin: 0 auto 2rem;
     max-width: 90%;
   }
