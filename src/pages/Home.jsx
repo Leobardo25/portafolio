@@ -33,7 +33,7 @@ const Home = ({ darkMode }) => {
       </div>
 
       {/* Video que cambia según el tema */}
-      <video className="video" autoPlay loop muted key={darkMode ? "dark" : "light"}>
+      <video className="video-container" autoPlay loop muted key={darkMode ? "dark" : "light"}>
         <source src={darkMode ? videoNoche : videoDia} type="video/mp4" />
         Tu navegador no soporta videos.
       </video>
