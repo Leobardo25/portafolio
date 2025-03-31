@@ -1,40 +1,103 @@
-/* Estilos para el contenedor de la sección sobre mí */
-.about-container {
-  padding: 50px 10%;
-  transition: background-color 0.3s ease; /* Transición suave */
+:root {
+  --primary-color: #5037db;
+  --primary-hover: #3a29a8;
+  --accent-light: #a40ab9;
+  --accent-dark: #f5401c;
+  --text-dark: #000205;
+  --text-light: #f7fafc;
+  --bg-dark: rgba(0, 0, 0, 0.4);
+  --bg-light: rgba(248, 248, 248, 0.332);
+  --card-bg-dark: rgba(30, 30, 30, 0.7);
+  --card-bg-light: rgba(255, 255, 255, 0.7);
+  --transition-speed: 0.3s;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --box-shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* Contenedor principal */
+.about-container {
+  display: grid;
+  padding: 4rem 10%;
+  min-height: 100vh;
+  transition: all var(--transition-speed) ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding-top: 0%;
+  position: relative;
+  overflow: hidden;
+  bottom: 100px;
+ 
+}
+
+
+
 .about-container.dark {
-  background-color: #00000066; /* Fondo oscuro para el modo noche */
-  color: white; /* Asegúrate de que el texto sea claro */
+  background-color: rgba(0, 0, 0, 0.575);
+  color: var(--text-light);
+  
 }
 
 .about-container.light {
-  background-color: #f8f8f866; /* Fondo claro para el modo día */
-  color: black; /* Texto oscuro */
+  background-color: rgba(255, 255, 255, 0.47);
+  color: var(--text-dark);
 }
 
+/* Encabezado */
 .about-header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 3rem;
+  margin-top: 100px;
 }
 
 .about-header h2 {
-  font-size: 2em;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .about-header p {
-  font-size: 1em;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
+/* Contenido principal */
 .about-content {
-  display: grid; /* Usamos grid para las 4 partes */
-  grid-template-columns: 1fr 1fr; /* Dos columnas */
-  grid-template-rows: auto auto; /* Dos filas */
-  gap: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
   grid-template-areas:
     "left-top right-top"
-    "left-bottom right-bottom"; /* Distribuimos el contenido en 4 áreas */
+    "left-bottom right-bottom";
+}
+
+/* Secciones */
+.about-left-top,
+.about-right-top,
+.about-left-bottom,
+.about-right-bottom {
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  transition: transform var(--transition-speed) ease;
+}
+
+.about-container.dark .about-left-top,
+.about-container.dark .about-right-top,
+.about-container.dark .about-left-bottom,
+.about-container.dark .about-right-bottom {
+  background-color: var(--card-bg-dark);
+}
+
+.about-container.light .about-left-top,
+.about-container.light .about-right-top,
+.about-container.light .about-left-bottom,
+.about-container.light .about-right-bottom {
+  background-color: var(--card-bg-light);
 }
 
 .about-left-top {
@@ -45,140 +108,199 @@
   grid-area: right-top;
 }
 
-.about-left-bottom {
-  grid-area: left-bottom;
+/* Imagen */
+.about-image {
+  width: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 1.5rem;
 }
 
-.about-right-bottom {
-  grid-area: right-bottom;
-}
-
-.about-image img {
-  border-radius: 10px;
+.profile-image {
   width: 100%;
   height: auto;
+  display: block;
+  transition: transform var(--transition-speed) ease;
 }
 
-.about-text {
-  max-width: 600px;
+.about-image:hover .profile-image {
+  transform: scale(1.03);
 }
 
-.about-text ul {
+/* Texto */
+.about-intro p {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Educación */
+.education-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.education-section ul {
   list-style-type: none;
-  padding-left: 0;
+  padding-left: 1.5rem;
 }
 
-.about-text ul li {
-  margin: 10px 0;
+.education-section li {
+  margin-bottom: 0.8rem;
+  position: relative;
+  line-height: 1.5;
 }
 
-.about-text a {
-  text-decoration: none;
-  color: #0073e6;
+.education-section li::before {
+  content: "•";
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  position: absolute;
+  left: -1.2rem;
+  top: -0.2rem;
 }
 
-.about-text a:hover {
-  text-decoration: underline;
+/* Habilidades */
+.skills-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
 }
 
 .skill {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) ease;
+  cursor: default;
 }
 
-.projects-button {
-  padding: 10px 20px;
-  font-size: 1.1rem;
-  background-color: #5037db;
-  color: white;
+.about-container.dark .skill {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.about-container.light .skill {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.skill:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.skill-icon {
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+/* Botones */
+.about-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.action-button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-right: 15px;
+  transition: all var(--transition-speed) ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  box-shadow: var(--box-shadow);
 }
 
-.projects-button:hover {
-  background-color: #3e2ab0;
+.action-button.primary {
+  background-color: var(--primary-color);
+  color: white;
 }
 
-/* Media Queries para pantallas más pequeñas */
+.action-button.primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow-hover);
+}
 
-/* Para pantallas con un máximo de 768px (tabletas y móviles pequeños) */
-@media (max-width: 768px) {
-  /* Ajustar el padding del contenedor */
+.action-button.secondary {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.about-container.dark .action-button.secondary {
+  color: var(--text-light);
+  border-color: var(--text-light);
+}
+
+.action-button.secondary:hover {
+  background-color: rgba(80, 55, 219, 0.1);
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.action-button svg {
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
   .about-container {
-    padding: 40px 5%;
+    padding: 3rem 8%;
   }
+}
 
-  /* Ajustar el tamaño del texto en el encabezado */
-  .about-header h2 {
-    font-size: 1.8em;
-  }
-
-  .about-header p {
-    font-size: 0.9em;
-  }
-
-  /* Cambiar el layout de la grilla a una sola columna */
+@media (max-width: 768px) {
   .about-content {
-    grid-template-columns: 1fr; /* Una sola columna */
+    grid-template-columns: 1fr;
     grid-template-areas:
       "left-top"
       "right-top"
       "left-bottom"
-      "right-bottom"; /* Cambiar la distribución para dispositivos pequeños */
+      "right-bottom";
+    gap: 1.5rem;
   }
-
-  /* Ajustar las imágenes */
-  .about-image img {
-    width: 100%;
-    height: auto;
+  
+  .about-header h2 {
+    font-size: 2rem;
   }
-
-  /* Ajustar el tamaño de las habilidades */
+  
   .skills-grid {
-    flex-direction: column; /* Apilar las habilidades verticalmente */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
-
-  .projects-button {
-    font-size: 1rem; /* Reducir el tamaño del botón */
-    padding: 8px 15px; /* Reducir padding */
+  
+  .about-actions {
+    flex-direction: column;
+  }
+  
+  .action-button {
+    width: 100%;
   }
 }
 
-/* Para pantallas de hasta 480px (móviles muy pequeños) */
 @media (max-width: 480px) {
-  /* Reducir el tamaño de la fuente del título */
-  .about-header h2 {
-    font-size: 1.5em;
-  }
-
-  .about-header p {
-    font-size: 0.8em;
-  }
-
-  /* Ajustar el padding del contenedor */
   .about-container {
-    padding: 30px 3%;
+    padding: 2rem 5%;
   }
-
-  /* Cambiar el diseño de las imágenes */
-  .about-image img {
-    width: 100%;
-    height: auto;
+  
+  .about-header h2 {
+    font-size: 1.8rem;
   }
-
-  .projects-button {
-    font-size: 0.9rem;
-    padding: 6px 12px;
+  
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   }
 }

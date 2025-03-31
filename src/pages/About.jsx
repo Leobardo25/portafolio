@@ -1,118 +1,152 @@
-import React from "react";
-import "./About.css"; // Asegúrate de tener los estilos para esta sección
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaPhp, FaPython } from "react-icons/fa";
-import { SiTypescript, SiMysql, SiPostgresql } from "react-icons/si";
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { FaFileDownload, FaEye } from 'react-icons/fa';
+import { 
+  FaHtml5, FaCss3Alt, FaJs, FaReact, 
+  FaNodeJs, FaPhp, FaPython 
+} from 'react-icons/fa';
+import { SiTypescript, SiMysql, SiPostgresql } from 'react-icons/si';
+import './About.css';
 import Image from '../img/1743010873635.jpg';
 
 const About = ({ darkMode }) => {
+  // Animaciones
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const skills = [
+    { icon: <FaHtml5 size={24} />, name: "HTML", color: "#E34F26" },
+    { icon: <FaCss3Alt size={24} />, name: "CSS", color: "#1572B6" },
+    { icon: <FaJs size={24} />, name: "JavaScript", color: "#F7DF1E" },
+    { icon: <FaReact size={24} />, name: "React", color: "#61DBFB" },
+    { icon: <SiTypescript size={24} />, name: "TypeScript", color: "#007ACC" },
+    { icon: <SiMysql size={24} />, name: "MySQL", color: "#00758F" },
+    { icon: <SiPostgresql size={24} />, name: "PostgreSQL", color: "#336791" },
+    { icon: <FaNodeJs size={24} />, name: "Node.js", color: "#3C873A" },
+    { icon: <FaPhp size={24} />, name: "PHP", color: "#777BB4" },
+    { icon: <FaPython size={24} />, name: "Python", color: "#3776AB" }
+  ];
+
+  const education = [
+    "Técnico Medio en Desarrollo de Software",
+    "Frontend Developer (HTML, CSS, JavaScript, React)",
+    "Bases de Datos (SQL, MySQL, PostgreSQL)",
+    "Python para desarrollo web",
+    "Inglés Técnico (nivel intermedio)",
+    "Bootcamp de Desarrollo Web Full Stack"
+  ];
+
   return (
-    <section id="about" className={`about-container ${darkMode ? "dark" : "light"}`}>
-      <div className="about-header">
+    <motion.section 
+      id="about"
+      className={`about-container ${darkMode ? "dark" : "light"}`}
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      <motion.div className="about-header" variants={itemVariants}>
         <h2>Sobre mí</h2>
         <p>Conoce un poco más sobre mi experiencia y habilidades.</p>
-      </div>
+      </motion.div>
 
       <div className="about-content">
-        {/* Parte Superior Izquierda */}
-        <div className="about-left-top">
+        {/* Sección Izquierda */}
+        <motion.div className="about-left-top" variants={itemVariants}>
           <div className="about-image">
-            <img src={Image} alt="Tu foto" />
+            <img 
+              src={Image}
+              alt="Tu foto" 
+              className="profile-image"
+            />
           </div>
 
-          <h3>Habilidades Tecnológicas</h3>
-          <div className="skills-container">
+          <motion.div className="skills-section" variants={itemVariants}>
+            <h3>Habilidades Tecnológicas</h3>
             <div className="skills-grid">
-              <div className="skill">
-                <FaHtml5 size={20} color="#E34F26" /> <span>HTML</span>
-              </div>
-              <div className="skill">
-                <FaCss3Alt size={20} color="#1572B6" /> <span>CSS</span>
-              </div>
-              <div className="skill">
-                <FaJs size={20} color="#F7DF1E" /> <span>JavaScript</span>
-              </div>
-              <div className="skill">
-                <FaReact size={20} color="#61DBFB" /> <span>React</span>
-              </div>
-              <div className="skill">
-                <SiTypescript size={20} color="#007ACC" /> <span>TypeScript</span>
-              </div>
-              <div className="skill">
-                <SiMysql size={20} color="#00758F" /> <span>MySQL</span>
-              </div>
-              <div className="skill">
-                <SiPostgresql size={20} color="#336791" /> <span>SQL (PostgreSQL)</span>
-              </div>
-              <div className="skill">
-                <FaNodeJs size={20} color="#3C873A" /> <span>Node.js</span>
-              </div>
-              <div className="skill">
-                <FaPhp size={20} color="#777BB4" /> <span>PHP</span>
-              </div>
-              <div className="skill">
-                <FaPython size={20} color="#3776AB" /> <span>Python</span>
-              </div>
+              {skills.map((skill, index) => (
+                <motion.div 
+                  key={index}
+                  className="skill"
+                  whileHover={{ y: -5, scale: 1.05 }}
+                  variants={itemVariants}
+                >
+                  <div className="skill-icon" style={{ color: skill.color }}>
+                    {skill.icon}
+                  </div>
+                  <span>{skill.name}</span>
+                </motion.div>
+              ))}
             </div>
-          </div>
-          <h3>Experiencia Profesional</h3>
-          <p>
-            Recientemente graduado en desarrollo web, he adquirido experiencia a través de prácticas y proyectos 
-            relacionados con tecnologías como JavaScript, React, HTML y CSS. Este portafolio refleja mi continuo 
-            aprendizaje y el desarrollo de mis habilidades en un entorno profesional. Puedes explorar mis proyectos 
-            para ver ejemplos de mi trabajo y enfoque en el desarrollo web.
-          </p>
-       
+          </motion.div>
+        </motion.div>
 
-        </div>
+        {/* Sección Derecha */}
+        <motion.div className="about-right-top" variants={itemVariants}>
+          <motion.div className="about-intro" variants={itemVariants}>
+            <p>
+              ¡Hola! Soy Leonardo, un desarrollador web apasionado por la programación. 
+              Me especializo en frontend con JavaScript, React, HTML y CSS, además de 
+              tener experiencia en Node.js, bases de datos, y TypeScript.
+            </p>
+          </motion.div>
 
-        {/* Parte Superior Derecha */}
-        <div className="about-right-top">
-          <p>
-            ¡Hola! Soy Leonardo, un desarrollador web apasionado por la programación. 
-            Me especializo en frontend con JavaScript, React, HTML y CSS, además de tener experiencia en Node.js,
-            bases de datos, y TypeScript. También me adapto fácilmente a nuevas tecnologías y herramientas,
-            lo que me ha permitido trabajar con UX/UI, Python, Java, PHP y Microsoft Office.
-          </p>
+          <motion.div className="education-section" variants={itemVariants}>
+            <h3>Formación</h3>
+            <ul>
+              {education.map((item, index) => (
+                <motion.li 
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ x: 5 }}
+                >
+                  {item}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
 
-          <h3>Formación</h3>
-          <ul>
-            <li>Técnico Medio en Desarrollo de Software: Formación técnica centrada en el desarrollo de aplicaciones y programación en diversas tecnologías.</li>
-            <li>Frontend Developer: Formación en HTML, CSS, JavaScript, React y diseño web. VLA</li>
-            <li>Bases de Datos: Conceptos fundamentales en la gestión y diseño de bases de datos, con énfasis en SQL. VLA</li>
-            <li>Python: Capacitación en programación con Python, centrada en su uso para desarrollo web y automatización. VLA</li>
-            <li>Inglés Técnico: Nivel medio en comprensión y producción de documentación técnica en inglés.</li>
-            <li>Bootcamp de Desarrollo Web: Entrenamiento intensivo en desarrollo frontend y backend, con enfoque práctico en el uso de tecnologías actuales como JavaScript, React, Node.js y bases de datos.</li>
-          </ul>
-
-        <button 
-          className="projects-button" 
-          onClick={() => window.location.href = '/projects'}>
-            Mis proyectos
-        </button>
-
-        <button 
-            className="projects-button" 
-            onClick={() => window.open('/English Cv Ever Corrales.pdf', '_blank')}>
-              Descargar CV
-          </button>
-
-
-        </div>
-
-        {/* Parte Inferior Izquierda */}
-        <div className="about-left-bottom">
-       
-        </div>
-
-        {/* Parte Inferior Derecha */}
-        <div className="about-right-bottom">
-     
-        </div>
+          <motion.div className="about-actions" variants={itemVariants}>
+            <motion.button
+              className="action-button primary"
+              onClick={() => window.open('/English Cv Ever Corrales.pdf', '_blank')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaFileDownload /> Descargar CV
+            </motion.button>
+            
+            <Link to="/projects" className="action-button secondary">
+              <FaEye /> Ver mis proyectos
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
 export default About;
 
-  
+

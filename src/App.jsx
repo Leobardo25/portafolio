@@ -1,32 +1,40 @@
 import { BrowserRouter as Router } from "react-router-dom"; 
 import Navbar from "./components/Navbar";
-import MainRoutes from "./routes/MainRoutes"; // Rutas
+import MainRoutes from "./routes/MainRoutes";
 import useTheme from "./hooks/useTheme";
 import "./App.css"; 
-
-import videoBackground from './videos/video.mp4'; 
+import videoBackground from './videos/video.mp4';
+import { useMemo } from 'react';
 
 function App() {
-  const [darkMode, setDarkMode] = useTheme(); // Hook personalizado para el manejo del modo oscuro
+  const [darkMode, setDarkMode] = useTheme();
+
+  // Memoize el video para evitar recargas innecesarias
+  const videoElement = useMemo(() => (
+    <video className="video-background" autoPlay loop muted playsInline>
+      <source src={videoBackground} type="video/mp4" />
+      Tu navegador no soporta videos.
+    </video>
+  ), []);
 
   return (
     <Router>
       <div className={`app-container ${darkMode ? "dark" : "light"}`}>
-        {/* Navbar con el tema claro/oscuro */}
         <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-
-        {/* Contenedor para el video de fondo */}
+        
+        {/* Video de fondo */}
         <div className="video-background-container">
-          <video className="video-background" autoPlay loop muted>
-            <source src={videoBackground} type="video/mp4" />
-            Tu navegador no soporta videos.
-          </video>
+          {videoElement}
+          {/* Capa overlay para mejor legibilidad */}
+          <div className={`video-overlay ${darkMode ? "dark-overlay" : "light-overlay"}`}></div>
         </div>
 
-        {/* Contenido de la aplicación, que incluye las rutas */}
-        <div className="content">
+        {/* Contenido principal */}
+        <main className="content">
           <MainRoutes darkMode={darkMode} /> 
-        </div>
+        </main>
+        
+        {/* Podrías añadir un Footer aquí si lo necesitas */}
       </div>
     </Router>
   );

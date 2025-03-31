@@ -1,52 +1,107 @@
 /* Estilos globales */
+:root {
+  --scrollbar-thumb-dark: #2e0e34;
+  --scrollbar-thumb-light: #6d3d7a;
+  --scrollbar-track-dark: #f1f1f128;
+  --scrollbar-track-light: #f1f1f1;
+}
+
 html, body {
   height: 100%; 
   margin: 0; 
   padding: 0;
-  scroll-behavior: smooth;  
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* Previene scroll horizontal */
 }
 
 .app-container {
-  min-height: 100%;
+  min-height: 100vh; /* Usar vh en lugar de % para mayor consistencia */
   display: flex;
-  flex-direction: column; /* Asegura que el contenido no se sobreponga */
+  flex-direction: column;
+  position: relative;
 }
 
 .video-background-container {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Coloca el video detrás del contenido */
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
 }
 
 .video-background {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Hace que el video ocupe toda la pantalla */
+  object-fit: cover;
+  object-position: center;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.dark-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.light-overlay {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .content {
   position: relative;
   z-index: 1;
-  padding-top: 80px; /* Espacio para el navbar fijo */
+  padding-top: 80px;
+  flex: 1; /* Asegura que el contenido ocupe el espacio restante */
 }
 
-
-
-
+/* Scrollbar styles */
 ::-webkit-scrollbar {
-  width: 3px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #2e0e34;
+  background-color: var(--scrollbar-thumb-dark);
   border-radius: 10px;
-  border: 2px solid #ffffff40;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #f1f1f128;
+  background-color: var(--scrollbar-track-dark);
   border-radius: 10px;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-light);
+}
+
+.light ::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-light);
+}
+
+/* Mejoras de accesibilidad para modo oscuro/claro */
+.dark {
+  color-scheme: dark;
+}
+
+.light {
+  color-scheme: light;
+}
+
+/* Optimización para móviles */
+@media (max-width: 768px) {
+  .content {
+    padding-top: 60px; /* Menor espacio para navbar móvil */
+  }
+  
+  .video-background {
+    /* Opcional: cargar un video diferente para móviles con menor resolución */
+  }
 }

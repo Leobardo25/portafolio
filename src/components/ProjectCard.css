@@ -1,81 +1,201 @@
+:root {
+  --primary-color: #5037db;
+  --primary-hover: #3a29a8;
+  --accent-light: #a40ab9;
+  --accent-dark: #f5401c;
+  --text-dark: #2d3748;
+  --text-light: #f7fafc;
+  --card-bg-light: #ffffff;
+  --card-bg-dark: #1a1a2e;
+  --transition-speed: 0.3s;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --box-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
 .project-card {
-  width: 300px; /* Tamaño base de la tarjeta */
-  border-radius: 10px;
+  width: 100%;
+  max-width: 350px;
+  border-radius: var(--border-radius);
   overflow: hidden;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  transition: transform 0.3s ease-in-out;
-  max-width: 100%; /* Asegura que no se desborde */
-  box-sizing: border-box; /* Considera el padding y border dentro del tamaño total */
+  margin: 1rem;
+  transition: all var(--transition-speed) ease;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-speed) ease;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.image-container:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-container:hover .project-image {
+  transform: scale(1.05);
+}
+
+.project-details {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-details h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.project-description {
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+  color: inherit;
+  opacity: 0.9;
+  flex-grow: 1;
+}
+
+.technologies-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.tech-tag {
+  background-color: rgba(80, 55, 219, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
 }
 
 .project-links a {
-  padding: 12px 0px; /* Aumenta la altura y el ancho interno del botón */
-  display: inline-block; /* Hace que el botón se expanda según su contenido */
-  min-width: 100%; /* Define un ancho mínimo */
+  flex: 1;
+  padding: 0.7rem;
   text-align: center;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: all var(--transition-speed) ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
 }
 
 /* --- Modo Claro --- */
 .project-card.light {
-  background-color: #fff;
-  color: black;
+  background-color: var(--card-bg-light);
+  color: var(--text-dark);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.project-card.light .tech-tag {
+  background-color: rgba(164, 10, 185, 0.1);
+  color: var(--accent-light);
 }
 
 .project-card.light .project-links a {
-  background: #a40ab994;
-  color: rgb(0, 0, 0);
+  background: var(--primary-color);
+  color: white;
 }
 
 .project-card.light .project-links a:hover {
-  background:#6c077ab9;
+  background: var(--primary-hover);
 }
 
 /* --- Modo Oscuro --- */
 .project-card.dark {
-  background: linear-gradient(to right, #000000cb, #01012fae);
-  color: white;
+  background-color: var(--card-bg-dark);
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-card.dark .tech-tag {
+  background-color: rgba(245, 64, 28, 0.1);
+  color: #f5401c;
 }
 
 .project-card.dark .project-links a {
-  background: #f5401cb1;
-  color: rgb(255, 255, 255);
+  background: var(--accent-dark);
+  color: white;
 }
 
 .project-card.dark .project-links a:hover {
-  background: #81210ede;
+  background: #c73212;
 }
 
-/* --- Efectos de hover --- */
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Media Queries para pantallas más pequeñas */
-
-/* Para pantallas con un máximo de 768px (tabletas y móviles pequeños) */
+/* Responsive */
 @media (max-width: 768px) {
   .project-card {
-    width: 100%; /* Las tarjetas ocuparán todo el ancho disponible */
-    margin: 10px 0; /* Espacio reducido entre las tarjetas */
+    max-width: 100%;
+    margin: 1rem 0;
   }
-
+  
+  .image-container {
+    height: 180px;
+  }
+  
+  .project-links {
+    flex-direction: column;
+  }
+  
   .project-links a {
-    padding: 10px; /* Reducir el padding en dispositivos pequeños */
+    width: 100%;
   }
 }
 
-/* Para pantallas de hasta 480px (móviles muy pequeños) */
 @media (max-width: 480px) {
-  .project-card {
-    width: 100%; /* Las tarjetas ocuparán todo el ancho disponible */
-    margin: 10px 0; /* Espacio reducido entre las tarjetas */
+  .project-details {
+    padding: 1.2rem;
   }
-
-  .project-links a {
-    padding: 8px 0; /* Reducir el padding en móviles muy pequeños */
+  
+  .project-details h3 {
+    font-size: 1.3rem;
+  }
+  
+  .project-description {
+    font-size: 0.9rem;
   }
 }
